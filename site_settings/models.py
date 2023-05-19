@@ -2,7 +2,7 @@ from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from django.db import models
 
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 
 
@@ -11,7 +11,6 @@ class ContactSettings(BaseSiteSetting):
 
     contact_button_text = models.CharField(null=True, blank=True, max_length=32, default="Form",
                                            help_text='Enter the text that will appear on the contact button')
-    # noinspection PyUnresolvedReferences
     contact_button_page = models.ForeignKey('wagtailcore.Page', blank=True, null=True, related_name='+',
                                             on_delete=models.SET_NULL,
                                             help_text='Select the contact form page to link')
@@ -29,7 +28,7 @@ class ContactSettings(BaseSiteSetting):
     panels = [
         MultiFieldPanel([
             FieldPanel("contact_button_text"),
-            PageChooserPanel('contact_button_page'),
+            FieldPanel('contact_button_page'),
         ], heading='Contact Button'),
         MultiFieldPanel([
             FieldPanel("call_button_text"),
