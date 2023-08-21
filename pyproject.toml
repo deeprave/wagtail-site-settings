@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "wagtail-site-settings"
-version = "2023.1.0"
+version = "2023.1.1"
 description = "Generic wagtail site settings"
 authors = ["David Nugent <davidn@uniquode.io>"]
 license = "MIT"
